@@ -36,6 +36,8 @@ jobs:
           context: images/netica
           push: true
           platforms: linux/amd64
+          no-cache: true
           tags: |
+            ghcr.io/nam-h-pham/netica-kasm:1.19-winefix
             ghcr.io/nam-h-pham/netica-kasm:1.19
             ghcr.io/nam-h-pham/netica-kasm:latest
