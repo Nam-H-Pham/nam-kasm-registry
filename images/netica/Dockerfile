@@ -7,6 +7,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN dpkg --add-architecture i386 && \
     apt-get update && \
     apt-get install -y --no-install-recommends \
+      wine \
       wine64 \
       wine32 \
       unzip \
@@ -15,23 +16,26 @@ RUN dpkg --add-architecture i386 && \
       fonts-liberation \
       fonts-wine \
       winbind && \
+    command -v wine && \
+    wine --version && \
     rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /opt/netica && \
     wget -q https://www.norsys.com/downloads/Netica_Win.zip -O /tmp/netica.zip && \
     unzip /tmp/netica.zip -d /opt/netica && \
-    rm /tmp/netica.zip
+    rm /tmp/netica.zip && \
+    find /opt/netica -type f \( -iname 'Netica.exe' -o -iname 'Netica32.exe' \) | grep -q .
 
 RUN cat > /usr/local/bin/netica <<'EOF'
 #!/usr/bin/env bash
 set -e
 export WINEPREFIX="${HOME}/.wine"
-NETICA_EXE="$(find /opt/netica -type f \( -iname 'Netica.exe' -o -iname 'Netica32.exe' \) | head -n 1)"
+NETICA_EXE="$(find /opt/netica -type f \( -iname 'Netica32.exe' -o -iname 'Netica.exe' \) | head -n 1)"
 if [ -z "$NETICA_EXE" ]; then
   echo "Netica executable not found" >&2
   exit 1
 fi
-exec wine "$NETICA_EXE"
+exec /usr/bin/wine "$NETICA_EXE"
 EOF
 
 RUN chmod +x /usr/local/bin/netica && \
@@ -52,7 +56,7 @@ EOF
 RUN cat > /dockerstartup/custom_startup/netica.sh <<'EOF'
 #!/usr/bin/env bash
 /usr/bin/desktop_ready
-sleep 2
+sleep 4
 /usr/local/bin/netica >/tmp/netica.log 2>&1 &
 EOF
 
