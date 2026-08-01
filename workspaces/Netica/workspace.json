@@ -20,11 +20,11 @@
   "notes": "Netica is proprietary software distributed by Norsys. Using the workspace indicates acceptance of the Norsys licence agreement. Launch in Limited Mode unless you have a licence password.",
   "compatibility": [
     {
-      "version": "1.17.x",
-      "image": "ghcr.io/nam-h-pham/netica-kasm:1.17",
+      "version": "1.19.x",
+      "image": "ghcr.io/nam-h-pham/netica-kasm:1.19",
       "uncompressed_size_mb": 2600,
       "available_tags": [
-        "1.17",
+        "1.19",
         "latest"
       ]
     }
