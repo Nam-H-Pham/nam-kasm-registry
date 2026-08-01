@@ -1,4 +1,4 @@
-FROM kasmweb/ubuntu-focal-desktop:1.17.0
+FROM kasmweb/ubuntu-jammy-desktop:1.17.0-rolling-daily
 
 USER root
 
