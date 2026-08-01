@@ -37,5 +37,5 @@ jobs:
           push: true
           platforms: linux/amd64
           tags: |
-            ghcr.io/nam-h-pham/netica-kasm:1.17
+            ghcr.io/nam-h-pham/netica-kasm:1.19
             ghcr.io/nam-h-pham/netica-kasm:latest
