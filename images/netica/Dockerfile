@@ -1,4 +1,4 @@
-FROM kasmweb/ubuntu-jammy-desktop:1.17.0-rolling-daily
+FROM kasmweb/ubuntu-jammy-desktop:1.19.0-rolling-weekly
 
 USER root
 
