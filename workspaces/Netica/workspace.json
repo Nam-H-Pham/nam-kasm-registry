@@ -1,0 +1,32 @@
+{
+  "friendly_name": "Netica",
+  "description": "Create, edit and analyse Bayesian networks with Netica running through Wine in a Kasm desktop.",
+  "image_src": "netica.svg",
+  "categories": [
+    "Education",
+    "Productivity",
+    "Development"
+  ],
+  "architecture": [
+    "amd64"
+  ],
+  "docker_registry": "https://ghcr.io",
+  "cores": 2,
+  "memory": 2048,
+  "gpu_count": 0,
+  "run_config": {
+    "shm_size": "1gb"
+  },
+  "notes": "Netica is proprietary software distributed by Norsys. Using the workspace indicates acceptance of the Norsys licence agreement. Launch in Limited Mode unless you have a licence password.",
+  "compatibility": [
+    {
+      "version": "1.17.x",
+      "image": "ghcr.io/nam-h-pham/netica-kasm:1.17",
+      "uncompressed_size_mb": 2600,
+      "available_tags": [
+        "1.17",
+        "latest"
+      ]
+    }
+  ]
+}
